@@ -12,8 +12,8 @@ func TestDistinckBy(t *testing.T) {
 	target := DistinctBy(source, func(x int) int {
 		return x % 2
 	})
-	sort.Slice(source, func(i, j int) bool {
-		return source[i] < source[j]
+	sort.Slice(target, func(i, j int) bool {
+		return target[i] < target[j]
 	})
 	assert.Equal(t, target, []int{1, 2})
 }
