@@ -10,7 +10,7 @@ on:
 
 jobs:
   release:
-    if: github.triggering_actor == 'samber'
+    if: github.triggering_actor == 'fangpin'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
