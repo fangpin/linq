@@ -18,3 +18,13 @@ WIP
 
 # examples
 WIP
+
+# roadmap
+[] implement all basic linq operations
+[] enrich the doc
+[] publish the v1 go pkg
+[] implement the v2 version: support parallel operation
+[] publish the v2 version
+[] potential performance optimization
+[] publish the v3 version
+
