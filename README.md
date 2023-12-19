@@ -20,7 +20,7 @@ WIP
 WIP
 
 # roadmap
-- [ ] implement all basic linq operations
+- [x] implement all basic linq operations
 - [ ] achieve 100% unittest coverage
 - [ ] enrich the doc
 - [ ] publish the v1 go pkg
