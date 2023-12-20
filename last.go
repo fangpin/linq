@@ -6,5 +6,5 @@ func Last[T comparable](source []T, predictor func(x T) bool) T {
 			return source[i]
 		}
 	}
-	panic("element not found")
+	panic(ElementNotFound)
 }

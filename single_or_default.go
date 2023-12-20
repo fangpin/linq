@@ -6,7 +6,7 @@ func SingleOrDefault[T comparable](source []T, pred func(x T) bool) T {
 	for _, s := range source {
 		if pred(s) {
 			if found {
-				panic("multiple items found")
+				panic(MultipleElementFound)
 			}
 			found = true
 			result = s

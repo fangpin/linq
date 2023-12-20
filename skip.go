@@ -5,5 +5,5 @@ func Skip[T any](source []T, n int) []T {
 		panic("negative skip number")
 	}
 	var t []T
-	return append(t, source[n:len(source)-n]...)
+	return append(t, source[n:]...)
 }
