@@ -21,7 +21,7 @@ WIP
 
 # roadmap
 - [x] implement all basic linq operations
-- [ ] achieve 100% unittest coverage
+- [x] achieve 100% unittest coverage
 - [ ] enrich the doc
 - [ ] publish the v1 go pkg
 - [ ] implement the v2 version: support parallel operation

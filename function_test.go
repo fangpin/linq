@@ -8,6 +8,8 @@ import (
 	"github.com/magiconair/properties/assert"
 )
 
+var emptySource []int
+
 func TestLast(t *testing.T) {
 	source := []int{1, 3, 5, 7, 8}
 	target := Last(source, func(x int) bool { return x%2 == 1 })
@@ -33,22 +35,31 @@ func TestMax(t *testing.T) {
 	source := []int{1, 3, 5, 0, -1}
 	target := Max(source)
 	assert.Equal(t, target, 5)
+	var emptySource []int
+	assert.Panic(t, func() { Max(emptySource) }, EmptySource)
 }
 
 func TestMaxBy(t *testing.T) {
 	source := []int{1, 3, 5, 0}
 	target := MaxBy(source, func(x int) int { return x % 3 })
 	assert.Equal(t, target, 5)
+	assert.Panic(
+		t,
+		func() { MaxBy(emptySource, func(x int) int { return x }) },
+		EmptySource)
 }
 
 func TestMin(t *testing.T) {
 	source := []int{1, 3, 5, 0}
 	assert.Equal(t, Min(source), 0)
+	var emptySource []int
+	assert.Panic(t, func() { Min(emptySource) }, EmptySource)
 }
 
 func TestMinBy(t *testing.T) {
 	source := []int{1, 3, 5, 7}
 	assert.Equal(t, MinBy(source, func(x int) int { return x % 3 }), 3)
+	assert.Panic(t, func() { MinBy(emptySource, func(x int) int { return x % 3 }) }, EmptySource)
 }
 
 func TestOfType(t *testing.T) {
@@ -110,6 +121,14 @@ func TestSingle(t *testing.T) {
 			})
 		},
 		ElementNotFound)
+	assert.Panic(
+		t,
+		func() {
+			Single([]int{1, 3, 6, 8, 9}, func(x int) bool {
+				return x%2 == 0
+			})
+		},
+		MultipleElementFound)
 }
 
 func TestSingleOrDefault(t *testing.T) {
@@ -140,6 +159,12 @@ func TestSkip(t *testing.T) {
 		t,
 		Skip([]int{1, 2, 3, 4}, 2),
 		[]int{3, 4})
+	assert.Panic(
+		t,
+		func() {
+			Skip(emptySource, 2)
+		},
+		InvalidParam)
 }
 
 func TestSkipLast(t *testing.T) {
@@ -147,6 +172,14 @@ func TestSkipLast(t *testing.T) {
 		t,
 		SkipLast([]int{1, 2, 3, 4}, 2),
 		[]int{1, 2})
+	assert.Panic(
+		t,
+		func() { SkipLast([]int{1, 2, 3, 4}, 7) },
+		InvalidParam)
+	assert.Panic(
+		t,
+		func() { SkipLast([]int{1, 2, 3, 4}, -1) },
+		InvalidParam)
 }
 
 func TestSkipWhile(t *testing.T) {
@@ -170,6 +203,14 @@ func TestTakeLast(t *testing.T) {
 		t,
 		TakeLast([]int{1, 2, 3, 4}, 2),
 		[]int{3, 4})
+	assert.Panic(
+		t,
+		func() { TakeLast([]int{1, 2, 3, 4}, 5) },
+		InvalidParam)
+	assert.Panic(
+		t,
+		func() { TakeLast([]int{1, 2, 3, 4}, -1) },
+		InvalidParam)
 }
 
 func TestTakeWhile(t *testing.T) {
@@ -227,4 +268,8 @@ func TestZip(t *testing.T) {
 	assert.Equal(t, zip[0].Second, "1")
 	assert.Equal(t, zip[1].First, 2)
 	assert.Equal(t, zip[1].Second, "2")
+	assert.Panic(
+		t,
+		func() { Zip([]int{1}, []int{2, 3}) },
+		InvalidParam)
 }
