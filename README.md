@@ -14,18 +14,56 @@ go get github.com/fangpin/linq
 ```
 
 # Supported linq operation
-WIP
-
-# examples
-WIP
-
-# roadmap
-- [x] implement all basic linq operations
-- [x] achieve 100% unittest coverage
-- [ ] enrich the doc
-- [ ] publish the v1 go pkg
-- [ ] implement the v2 version: support parallel operation
-- [ ] publish the v2 version
-- [ ] potential performance optimization
-- [ ] publish the v3 version
-
+- aggregate
+- all
+- any
+- average
+- chunk
+- contains
+- count
+- default_if_empty
+- distinct
+- distinct_by
+- except
+- except_by
+- first
+- first_or_default
+- group_by
+- group_join
+- intersect
+- intersect_by
+- keys
+- last
+- last_or_default
+- max
+- max_by
+- min
+- min_by
+- of_type
+- order
+- order_by
+- order_by_descending
+- order_descending
+- prepend
+- repeat
+- reverse
+- select
+- select_many
+- single
+- single_or_default
+- skip
+- skip_last
+- skip_while
+- sum
+- take
+- take_last
+- take_while
+- to_dictionary
+- to_hash_set
+- to_lookup
+- union
+- union_by
+- values
+- where
+- zero
+- zip
